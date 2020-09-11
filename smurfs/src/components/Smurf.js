@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 export default function Smurf(props) {
     
     return(
-        <div>
+        <div className={'smurf'}>
             <p>Name: {props.smurf.name}</p>
             <p>Age: {props.smurf.age}</p>
             <p>Height: {props.smurf.height}</p>
