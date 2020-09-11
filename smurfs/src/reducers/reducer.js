@@ -15,17 +15,24 @@ export const reducer = (state = initialState, action) => {
     case GET_SMURFS_START:
         console.log('GET_SMURFS_START')
         return {
-            ...state
+            ...state,
+            loading: true
         }
     case GET_SMURFS_SUCCESS:
       console.log("reducer!!!!! case for SET_SMURFS: ", action.payload);
       return {
         smurfs: action.payload,
+        error: '',
+        loading: false
       }
     case GET_SMURFS_FAILURE:
       console.log('GET_SMURFS_FAILURE')
     default:
       console.log("default reducer case!!!!!!");
-      return { ...state };
+      return { 
+          ...state,
+          error: action.payload,
+          loading: false
+        };
   }
 };
