@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from "react-redux";
+import axios from 'axios';
+
 
 const initialFormValues = {
     name: '',
@@ -7,7 +9,7 @@ const initialFormValues = {
     height: '',
 }
 
-export default function (props) {
+function Form (props) {
 
     const [ formValues, setFormValues ] = useState(initialFormValues)
 
@@ -19,9 +21,31 @@ export default function (props) {
     const updateForm = (inputName, inputValue) => {
         setFormValues( { ...formValues, [inputName]: inputValue } );
     }
+
+    const handleSubmit = (evt) => {
+        evt.preventDefault();
+        submitForm();
+    }
+
+    const submitForm = () => {
+        const newSmurf = {
+          id: Date.now(),
+          name: formValues.name.trim(),
+          age: formValues.age.trim(),
+          height: formValues.height.trim()
+        }
+        console.log(newSmurf);
+        axios.post(`http://localhost:3333/smurfs`, newSmurf)
+            .then( (res) => {
+                console.log(res)
+            })
+            .catch( (err) => {
+                console.error(err)
+            })
+      }
     
     return(
-        <form className={'smurf-form'}>
+        <form className={'smurf-form'} onSubmit={handleSubmit}>
             <label>
                 Name:
                 <input
@@ -49,6 +73,14 @@ export default function (props) {
                     onChange={handleChange}
                 />
             </label>
+            <input type='submit'></input>
         </form>
     )
 }
+
+function mapStateToProps(state) {
+    return {
+        ...state
+    }
+  }
+export default connect( mapStateToProps, {  })(Form);

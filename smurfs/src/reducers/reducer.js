@@ -34,22 +34,6 @@ export const reducer = (state = initialState, action) => {
         ...state,
         error: action.payload,
       };
-    case POST_SMURF_START:
-      return {
-        ...state,
-        loading: true,
-      };
-    case POST_SMURF_SUCCESS:
-      return {
-        ...state,
-        error: "",
-        loading: false,
-      };
-    case POST_SMURF_FAILURE:
-      return {
-        ...state,
-        error: action.payload,
-      };
     default:
       console.log("default reducer case!!!!!!");
       return {
