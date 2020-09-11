@@ -8,15 +8,15 @@ import { getSmurfs } from '../actions/actions'
 function Smurfs(props) {
     
     return(
-        <ul className={'smurfs'}>
+        <div className={'smurfs'}>
             <button onClick={() => props.getSmurfs()}> Get Smurfs </button>
             {console.log('checking props for Smurfs component: ', props)}
             {   
                 props.smurfs.map( (each) => {
-                    return <Smurf smurf={each} />
+                    return <Smurf key={each.id} smurf={each} />
                 })
             }
-        </ul>
+        </div>
     )
 }
 

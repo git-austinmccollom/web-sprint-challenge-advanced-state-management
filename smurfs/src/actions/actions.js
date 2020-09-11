@@ -16,6 +16,7 @@ export const getSmurfs = () => dispatch => {
             console.error(err);
             dispatch({type: GET_SMURFS_FAILURE, payload: err})
         })
+    
 }
 
 // export const setSmurfs = (smurfArray) => {

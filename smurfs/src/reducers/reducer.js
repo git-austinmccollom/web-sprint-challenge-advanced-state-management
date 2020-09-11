@@ -6,6 +6,8 @@ import {
 
 export const initialState = {
   smurfs: [],
+  error: '',
+  loading: false
 };
 
 export const reducer = (state = initialState, action) => {

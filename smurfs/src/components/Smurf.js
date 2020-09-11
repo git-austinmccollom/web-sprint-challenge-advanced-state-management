@@ -4,6 +4,10 @@ import { connect } from "react-redux";
 export default function Smurf(props) {
     
     return(
-        <li>Smurf here!</li>
+        <div>
+            <p>{props.smurf.name}</p>
+            <p>{props.smurf.age}</p>
+            <p>{props.smurf.height}</p>
+        </div>
     )
 }
